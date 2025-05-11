@@ -1,32 +1,34 @@
 import path from "path";
-import webpack from 'webpack';
-import dotenv from 'dotenv';
+import webpack from "webpack";
+import dotenv from "dotenv";
 dotenv.config();
 
-const config: webpack.Configuration = { mode: 'production',
-  entry: path.resolve(__dirname, 'src', 'index.ts'),
-    output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+const config: webpack.Configuration = {
+  target: "node",
+  mode: "production",
+  entry: path.resolve(__dirname, "src", "index.ts"),
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
     clean: true,
   },
-   module: {
+  module: {
     rules: [
       {
         test: /\.ts$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: [".ts", ".js"],
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.PORT': JSON.stringify(process.env.PORT)
-    })
-  ]
+      "process.env.PORT": JSON.stringify(process.env.PORT),
+    }),
+  ],
 };
 
-  export default config;
+export default config;
