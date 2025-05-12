@@ -2,7 +2,7 @@ to start
 
 go to the branch 
 "develop" 
-git-checkout -b "develop" 
+git-checkout "develop" 
 
 install dependencies 
 npm install 
@@ -13,7 +13,6 @@ ATTENTION!!!
 when sending a user to the server, i.e. when creating, you need to send a JSON file of the type 
 
 { 
-
 "username": "anna", 
 "age": 20, 
 "hobbies": ['string'] 
