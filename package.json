@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "cross-env NODE_ENV=development ts-node-dev --respawn src/index.ts",
+    "start:dev": "cross-env NODE_ENV=development ts-node-dev --respawn src/index.ts",
     "build": "webpack",
     "start:prod": "cross-env NODE_ENV=production npm run build && node dist/bundle.js",
     "lint": "eslint",
-    "start:multi": "cross-env NODE_ENV=development ts-node-dev src/cluster.ts"
+    "start:multi": "cross-env NODE_ENV=development ts-node-dev src/cluster.ts",
+    "start:multi:prod": "npm run build && cross-env NODE_ENV=production node dist/cluster.js"
   },
   "keywords": [],
   "author": "k0nnte",

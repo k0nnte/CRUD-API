@@ -3,7 +3,7 @@ import server from "./server";
 
 dotenv.config();
 
-const port = parseInt(process.env.PORT || "0");
+const port = parseInt(process.argv[2] || "0");
 
 if (!port) {
   console.error("Порт not found");

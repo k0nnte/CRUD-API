@@ -6,10 +6,14 @@ dotenv.config();
 const config: webpack.Configuration = {
   target: "node",
   mode: "production",
-  entry: path.resolve(__dirname, "src", "index.ts"),
+  entry: {
+    index: path.resolve(__dirname, "src", "index.ts"),
+    cluster: path.resolve(__dirname, "src", "cluster.ts"),
+    worker: path.resolve(__dirname, "src", "worker.ts"),
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].js",
     clean: true,
   },
   module: {

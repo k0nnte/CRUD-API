@@ -11,7 +11,12 @@ const numCPUs = cpus().length - 1;
 let currentWorker: number = 0;
 const workers: number[] = [];
 
-const work = resolve(__dirname, "worker.ts");
+console.log(process.env.NODE_ENV);
+
+const work =
+  process.env.NODE_ENV === "development"
+    ? resolve(__dirname, "worker.ts")
+    : resolve(__dirname, "worker.js");
 
 if (cluster.isPrimary) {
   console.log(`balanse from port ${PORT}`);
@@ -19,8 +24,8 @@ if (cluster.isPrimary) {
   for (let i = 0; i < numCPUs; i++) {
     const workerPort = PORT + i + 1;
     console.log(`start worker on port ${workerPort}`);
-    spawn("npx", ["ts-node", work], {
-      env: { ...process.env, PORT: workerPort.toString() },
+    spawn("npx", ["ts-node", work, workerPort.toString()], {
+      // env: { ...process.env, PORT: workerPort.toString() },
       stdio: "inherit",
       shell: true,
     });
