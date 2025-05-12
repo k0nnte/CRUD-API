@@ -30,7 +30,7 @@ export default async function del(
     (users as Array<User>).splice(index, 1);
     await fs.writeFile(filePath, JSON.stringify(users, null, 2), "utf-8");
     res.writeHead(204);
-    res.end();
+    res.end(JSON.stringify({ message: "successfully deleted" }));
   } catch {
     res.writeHead(500, { "content-type": "application/json" });
     res.end(JSON.stringify({ error: "server error" }));

@@ -47,10 +47,10 @@ export default async function add(
 
     users.push(user);
     await fs.writeFile(filePath, JSON.stringify(users, null, 2));
-    res.writeHead(200, { "content-type": "application/json" });
+    res.writeHead(201, { "content-type": "application/json" });
     res.end(JSON.stringify(user));
   } catch (err) {
-    res.writeHead(400, { "content-type": "application/json" });
+    res.writeHead(500, { "content-type": "application/json" });
     res.end(JSON.stringify(`ошибка при создании: ${err}`));
   }
 }
