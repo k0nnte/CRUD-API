@@ -1,7 +1,7 @@
 import { ServerResponse } from "http";
 import { validate } from "uuid";
 import fs from "fs/promises";
-import { User } from "./interface";
+import { User } from "../interface";
 
 export default async function getID(
   userID: string,

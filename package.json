@@ -7,7 +7,8 @@
     "start": "cross-env NODE_ENV=development ts-node-dev --respawn src/index.ts",
     "build": "webpack",
     "start:prod": "cross-env NODE_ENV=production npm run build && node dist/bundle.js",
-    "lint": "eslint"
+    "lint": "eslint",
+    "start:multi": "cross-env NODE_ENV=development ts-node-dev src/cluster.ts"
   },
   "keywords": [],
   "author": "k0nnte",
